@@ -3,7 +3,6 @@ package com.test.Google.pages;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.BrowserUtils;
@@ -31,18 +30,19 @@ public class GoogleMainPage {
         searchBar.sendKeys(item, Keys.ENTER);
     }
 
-    public boolean linkCount(int expectedNumber){
+    public boolean linkCount(int expectedNumber) throws InterruptedException {
+        Thread.sleep(2000);
         return allLinks.size()>expectedNumber;
     }
 
-    public boolean resultsfromsearch(int expectedResult){
+    public boolean resultsfromsearch(Integer expectedResult){
         String [] results= BrowserUtils.getText(this.result).split(" "); //About 129,000,000 results
         return Integer.parseInt(results[1].replace(",", ""))<expectedResult;
     }
 
     public boolean pageLoaded(double expectedTime){
         String [] time=BrowserUtils.getText(baklava).split(" "); //About 12,400,000 results (0.49 seconds)
-        return Double.parseDouble(time[0].replace("(", "").replace(",", ""))<expectedTime;
+        return Double.parseDouble(time[0].replace("(", ""))<expectedTime;
     }
 
 

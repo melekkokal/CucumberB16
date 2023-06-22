@@ -1,4 +1,4 @@
-Feature:Testing the Google Search Functionality
+Feature:Testing Google Search Functionality
   #general description
   Scenario: Happy Path(positive) Testing for Search
   #test case
@@ -7,11 +7,13 @@ Feature:Testing the Google Search Functionality
     Then User validates first page returns more than ten link
 
   Scenario: Happy Path(positive) Testing Result for Search
+    #test case
     Given User navigates to Google
     When User searches for Kyrgyz Food in USA
-    Then User validates the result is less than 300000000
+    Then User validates the result is less than three hundred million
 
-    Scenario: Happy Path(positive) Testing Result for Search
+    Scenario: Happy Path(positive) Testing Result for Load Times
+      #test case
       Given User navigates to Google
       When User searches for Turkish baklava
       Then User validates the result was loaded in less than one second.

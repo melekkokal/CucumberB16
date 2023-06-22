@@ -18,18 +18,19 @@ public class SearchStepDefinition {
     }
     @When("User searches for CodeFish")
     public void user_searches_for_code_fish() {
+
         mainPage.searchItem("CodeFish");
     }
     @Then("User validates first page returns more than ten link")
-    public void user_validates_first_page_returns_more_than_ten_link() {
+    public void user_validates_first_page_returns_more_than_ten_link() throws InterruptedException {
         Assert.assertTrue(mainPage.linkCount(10));
     }
     @When("User searches for Kyrgyz Food in USA")
     public void user_searches_for_kyrgyz_food_in_usa() {
        mainPage.searchItem("Kyrgyz Food in USA");
     }
-    @Then("User validates the result is less than 300000000")
-    public void user_validates_the_result_is_less_than() {
+    @Then("User validates the result is less than three hundred million")
+    public void user_validates_the_result_is_less_than_three_hundred_million() {
         Assert.assertTrue(mainPage.resultsfromsearch(300000000));
     }
 
@@ -38,7 +39,7 @@ public class SearchStepDefinition {
         mainPage.searchItem("Turkish baklava");
     }
     @Then("User validates the result was loaded in less than one second.")
-    public void user_valiates_the_result_was_loaded_in_less_than_second() {
+    public void user_valiates_the_result_was_loaded_in_less_than_one_second() {
 
         Assert.assertTrue(mainPage.pageLoaded(1));
     }
