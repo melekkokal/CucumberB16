@@ -12,10 +12,8 @@ public class PutOrderStepDef {
     WebDriver driver= DriverHelper.getDriver();
     WebOrderPutOrderPage putOrderPage=new WebOrderPutOrderPage(driver);
 
-    @When("User clicks group order and next button")
-    public void user_clicks_group_order_and_next_button() {
-    }
-    @Then("User sends {string} to invitees and add {string} and {string}")
+
+    @When("User clicks group order and next button and sends {string} to invitees and add {string} and {string}")
     public void user_sends_to_invitees_and_add(String note, String email1,String email2) throws InterruptedException {
         putOrderPage.typeNoteAndInvites(note,email1, email2);
     }
