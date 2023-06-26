@@ -1,11 +1,12 @@
 package com.test.weborder.pages;
 
+
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
+
 import utils.BrowserUtils;
 
 public class WebOrderPutOrderPage {
@@ -40,38 +41,37 @@ public class WebOrderPutOrderPage {
     @FindBy(tagName = "h1")
     WebElement header;
 
-    @FindBy(xpath = "//div[@class='col']//p[1]")
+    @FindBy(xpath = "//p[contains(text(),'now pending')]")
     WebElement description;
 
+    public void clickGroupOrderBox(){
+        if(checkbox.isDisplayed()){
+            checkbox.click();
+        }
+    }
 
-
-    public void typeNoteAndInvites(String note, String emails, String emails1)
-            throws InterruptedException {
-        checkbox.click();
-        Thread.sleep(2000);
+    public void clickNextButton(){
         next.click();
+    }
+
+
+    public void typeNoteAndInvites(String note, String emails, String emails1) {
         inviteNoteArea.sendKeys(note);
-        Thread.sleep(2000);
         inviteListArea.sendKeys(emails,",", emails1);
         delivery.click();
     }
 
-    public String PickTheLocation() throws InterruptedException {
-        Select select=new Select(myHouseAddress);
-        return BrowserUtils.getText(select.getFirstSelectedOption());
-
+    public void chooseLocation(String myHouseAddress, String expectedAddress) {
+        BrowserUtils.selectBy(this.myHouseAddress, myHouseAddress, "text"); //choose myhouse
+        Assert.assertTrue(BrowserUtils.getText(address).contains(expectedAddress)); //validate it here
     }
-    public String validateAddress(){
-        return BrowserUtils.getText(address);
-    }
-
-    public String header() throws InterruptedException {
+    public void clickCreateGroupOrderButton() throws InterruptedException {
         groupOrderButton.click();
-        Thread.sleep(1000);
-        return BrowserUtils.getText(header);
+        Thread.sleep(2000);
     }
-    public String description(){
-        return BrowserUtils.getText(description);
+    public void validateHeaderAndDescription(String expectedHeader, String expectedDescription) {
+       Assert.assertEquals(expectedHeader, BrowserUtils.getText(header));
+       Assert.assertTrue(expectedDescription, BrowserUtils.getText(description).contains(expectedDescription));
     }
 
 

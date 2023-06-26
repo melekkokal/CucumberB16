@@ -1,3 +1,4 @@
+@apiregression @regression
 Feature:Testing Google Search Functionality Parameters
   #general description
   Scenario: Happy Path(positive) Testing for Search Parameters
@@ -5,7 +6,7 @@ Feature:Testing Google Search Functionality Parameters
     Given User navigates to 'https://www.google.com/'
     When User searches for 'CodeFish'
     Then User validates first page returns more than 10 link
-
+@smoke
   Scenario: Happy Path(positive) Testing Result for Search Parameters
     #test case
     Given User navigates to 'https://www.google.com/'
